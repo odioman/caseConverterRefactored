@@ -63,3 +63,20 @@ function kebabCaseToSnakeCaseConverter(kebabCaseObj) {
 }
 
 console.log(kebabCaseToSnakeCaseConverter(kebabCaseObj));
+
+const kebabCaseObj = { key1: 'value-1', key2: 'value-two'}
+
+function kebabCaseToSnakeCaseConverter(kebabCaseObj) {
+  const strSplitAndJoin = Object.values(kebabCaseObj)
+    .map(string => string.split('-'))
+    .map(string => string.join('_'));
+  console.log(strSplitAndJoin)
+  const newObj = {};
+  for (const property in strSplitAndJoin) {
+     console.log(`key${Number(property)+1}: ${strSplitAndJoin[property]}`);
+    return `key${Number(property)+1}: ${strSplitAndJoin[property]}`;
+  }
+  return newObj
+}
+
+console.log(kebabCaseToSnakeCaseConverter(kebabCaseObj));
