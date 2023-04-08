@@ -124,3 +124,27 @@ function kebabCaseToSnakeCaseConverter(kebabCaseObj) {
   return kebabCaseObj
 }
 console.log(kebabCaseToSnakeCaseConverter(exampleKebabCaseObj));
+
+function snakeCaseToCamelCaseStr(str) {
+  const snakeCaseSplit = str.split('_');
+  const firstWord = snakeCaseSplit[0]
+  const capitalLetterArr = snakeCaseSplit
+    .map(word => {
+      return word[0].toUpperCase() + word.slice(1)
+    })
+  const capitalLetterShift = capitalLetterArr.shift()
+  const capitalLetterUnshift = capitalLetterArr.unshift(firstWord)
+  const camelCaseJoin = capitalLetterArr.join('')
+  console.log(camelCaseJoin)
+  return camelCaseJoin
+}
+
+//snakeCaseToCamelCase('you_da_best')
+
+function snakeCaseToCamelCase(snakeCaseArr){
+  const camelCaseArr = snakeCaseArr.map(string => snakeCaseToCamelCaseStr(string));
+  console.log(camelCaseArr);
+  return camelCaseArr
+}
+
+snakeCaseToCamelCase(exampleSnakeCase);
