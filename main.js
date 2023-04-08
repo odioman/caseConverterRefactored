@@ -80,3 +80,47 @@ function kebabCaseToSnakeCaseConverter(kebabCaseObj) {
 }
 
 console.log(kebabCaseToSnakeCaseConverter(kebabCaseObj));
+//========================================================
+
+const exampleSnakeCase = ['snake_case', 'another_example', 'can_be_many_words'];
+
+function snakeCaseToPascalCaseStr(str) {
+  const snakeCaseSplit = str.split('_');
+  const firstLetterArr = snakeCaseSplit
+    .map(word => {
+      return word[0].toUpperCase() + word.slice(1)
+    })
+    .join('')
+  console.log(firstLetterArr)
+  return firstLetterArr
+}
+
+//console.log(snakeCaseToPascalCaseStr("happy_camper"));
+
+function snakeCaseToPascalCase(snakeCaseArr) {
+  const pascalCaseArr = snakeCaseArr.map(string => snakeCaseToPascalCaseStr(string));
+  console.log(pascalCaseArr);
+  return pascalCaseArr
+} 
+
+snakeCaseToPascalCase(exampleSnakeCase)
+
+const exampleKebabCaseObj = { key1: 'value-1', key2: 'value-two'}
+
+function kebabCaseToSnakeCase(str) {
+  const strSplit = str.split('-');
+  const strJoin = strSplit.join('_');
+  return strJoin
+}
+
+console.log(kebabCaseToSnakeCase("value-1"))
+
+function kebabCaseToSnakeCaseConverter(kebabCaseObj) {
+  for (key in kebabCaseObj) {
+    const newStr = kebabCaseToSnakeCase(kebabCaseObj[key])
+    console.log('key', key ,'kebabCaseKey: ', newStr) 
+    kebabCaseObj[key] = newStr
+  }
+  return kebabCaseObj
+}
+console.log(kebabCaseToSnakeCaseConverter(exampleKebabCaseObj));
